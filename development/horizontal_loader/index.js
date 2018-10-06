@@ -23,6 +23,22 @@
        }
 
        return loader__container;
+     },
+
+     show: function () {
+       console.info( 'Showing the loading bar' );
+
+       loader__container.style.opacity = 1;
+
+       return loader__container;
+     },
+
+     hide: function () {
+       console.info( 'Hiding the loading bar' );
+
+       loader__container.style.opacity = 0;
+
+       return loader__container;
      }
    };
  }( window, document ) )
