@@ -29,7 +29,7 @@ body {
   width: 100%;
 }
 
-.horizontal-loader__container-bar {
+.horizontal-loader__container-loaded {
   background-color: #f00;
   box-shadow:0 0 16px 2px #f00;
   height: 2px;
