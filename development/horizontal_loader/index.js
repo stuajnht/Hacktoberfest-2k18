@@ -10,6 +10,17 @@
  var HorizontalLoader = ( function loader( window, document ) {
    var loader__container;
 
+   /**
+    * Number.isInteger Polyfill
+    * Taken from Mozilla Developer Network
+    * See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger#Polyfill
+    */
+    Number.isInteger = Number.isInteger || function( value ) {
+      return typeof value === 'number' &&
+      isFinite( value ) &&
+      Math.floor( value ) === value;
+    };
+
    return {
      init: function ( element, options ) {
        console.info( 'Using', element, 'for the loading bar' );
