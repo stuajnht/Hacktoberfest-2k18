@@ -20,9 +20,8 @@ body {
 
 .horizontal-loader__container-intermediate {
   background-color: #ccc;
-  content: ' ';
   height: 2px;
-  overflow: none;
+  overflow: hidden;
   position: absolute;
   right: 0;
   width: 100%;
@@ -30,7 +29,6 @@ body {
 
 .horizontal-loader__container-bar {
   background-color: #f00;
-  content: ' ';
   height: 2px;
   position: absolute;
   transition: width 2s;
