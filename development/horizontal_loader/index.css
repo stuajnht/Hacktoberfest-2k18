@@ -37,3 +37,34 @@ body {
   transition: width 2s;
   width: 50%;
 }
+
+
+/**
+ * Intermediate loading blocks
+ */
+ @keyframes intermediate-block {
+   0% {
+     right: -2px;
+   }
+   100% {
+     right: 100%;
+   }
+}
+
+/* The element to apply the animation to */
+.horizontal-loaded__intermediate-block {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: intermediate-block;
+  animation-timing-function: ease-out;
+}
+
+.horizontal-loaded__intermediate-block {
+  background-color: #f00;
+  height: 2px;
+  position: absolute;
+  right: -2px;
+  transition: right 2s;
+  transition-timing-function: step-end;
+  width: 2px;
+}
