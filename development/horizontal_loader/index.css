@@ -51,12 +51,27 @@ body {
    }
 }
 
-/* The element to apply the animation to */
 .horizontal-loaded__intermediate-block {
   animation-duration: 4s;
   animation-iteration-count: infinite;
   animation-name: intermediate-block;
   animation-timing-function: ease-out;
+}
+
+.horizontal-loaded__intermediate-block-1 {
+  animation-delay: 1s;
+}
+
+.horizontal-loaded__intermediate-block-2 {
+  animation-delay: 2s;
+}
+
+.horizontal-loaded__intermediate-block-3 {
+  animation-delay: 3s;
+}
+
+.horizontal-loaded__intermediate-block-4 {
+  animation-delay: 4s;
 }
 
 .horizontal-loaded__intermediate-block {
