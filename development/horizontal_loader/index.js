@@ -7,7 +7,7 @@
  * Reset () - set the bar back to 0% and intermediate to 100%
  */
 
- var horizontalLoader = ( function loader( window, document ) {
+ var HorizontalLoader = ( function loader( window, document ) {
    var loader__container;
 
    return {
