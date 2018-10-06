@@ -15,6 +15,8 @@ body {
  * Horizontal loader
  */
 .horizontal-loader__container {
+  opacity: 1;
+  transition: opacity 350ms;
   width: 100%;
 }
 
@@ -29,6 +31,7 @@ body {
 
 .horizontal-loader__container-bar {
   background-color: #f00;
+  box-shadow:0 0 16px 2px #f00;
   height: 2px;
   position: absolute;
   transition: width 2s;
