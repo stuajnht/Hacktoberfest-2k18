@@ -22,7 +22,7 @@
          console.error( 'Unable to use', element, 'for the loading bar. Is this a valid element ID?' );
        }
 
-       return loader__container;
+       return this;
      },
 
      show: function () {
@@ -30,7 +30,7 @@
 
        loader__container.style.opacity = 1;
 
-       return loader__container;
+       return this;
      },
 
      hide: function () {
@@ -38,7 +38,7 @@
 
        loader__container.style.opacity = 0;
 
-       return loader__container;
+       return this;
      }
    };
  }( window, document ) )
