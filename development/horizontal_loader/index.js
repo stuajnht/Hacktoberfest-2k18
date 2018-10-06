@@ -54,11 +54,16 @@
        }
 
        if ( !Number.isInteger( duration ) ) {
-         console.error( 'Unable to set a progress animation duration for the Horizontal Loader. The duration passed is not a integer.' );
+         console.error( 'Unable to set a progress animation duration for the Horizontal Loader. The duration is not an integer.' );
          return this;
        }
 
-       if ( duration >= 100 && duration <= 1000) {
+       if ( duration < 0 ) {
+         console.error( 'Unable to set a progress animation duration for the Horizontal Loader. The duration cannot be less than 0.' );
+         return this;
+       }
+
+       if ( duration >= 100 ) {
          console.info( 'Using a time resolution of miliseconds for the progress animation duration' );
          timeResolution = 'ms';
        }
