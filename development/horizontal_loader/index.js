@@ -37,6 +37,34 @@
        loader__container.style.opacity = 0;
 
        return this;
+     },
+
+     set: function ( value, duration ) {
+       // The resolution of time the duration needs to take - either 's' or 'ms'
+       var timeResolution = 's';
+
+       if ( !Number.isInteger( value ) || value < 0 || value > 100 ) {
+         console.error( 'Unable to set a value for the Horizontal Loader. The value needs to be an integer between 0 and 100 inclusive.' );
+         return this;
+       }
+
+       if ( typeof duration === 'undefined' ) {
+         console.info( 'Using a default value of 2 seconds for the progress animation duration' );
+         duration = 2;
+       }
+
+       if ( !Number.isInteger( duration ) ) {
+         console.error( 'Unable to set a progress animation duration for the Horizontal Loader. The duration passed is not a integer.' );
+         return this;
+       }
+
+       if ( duration >= 100 && duration <= 1000) {
+         console.info( 'Using a time resolution of miliseconds for the progress animation duration' );
+         timeResolution = 'ms';
+       }
+
+       console.info( 'Setting the Horizontal Loader progress to', value, 'over', duration + timeResolution );
+       return this;
      }
    };
  }( window, document ) )
