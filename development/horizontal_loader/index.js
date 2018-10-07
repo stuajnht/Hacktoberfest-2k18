@@ -9,6 +9,10 @@
 
  var HorizontalLoader = ( function loader( window, document ) {
    var loader__container;
+   var loader__intermediate;
+   var loader__progress;
+
+   var progress = 0;
 
    /**
     * Number.isInteger Polyfill
@@ -29,7 +33,11 @@
 
        if ( loader__container === null ) {
          console.error( 'Unable to use', element, 'for the loading bar. Is this a valid element ID?' );
+         return;
        }
+
+       loader__intermediate = loader__container.getElementsByClassName( 'horizontal-loader__container-intermediate' )[ 0 ];
+       loader__progress = loader__container.getElementsByClassName( 'horizontal-loader__container-loaded' )[ 0 ];
 
        return this;
      },
@@ -57,6 +65,8 @@
        if ( !Number.isInteger( value ) || value < 0 || value > 100 ) {
          console.error( 'Unable to set a value for the Horizontal Loader. The value needs to be an integer between 0 and 100 inclusive.' );
          return this;
+       } else {
+         progress = value;
        }
 
        if ( typeof duration === 'undefined' ) {
@@ -80,6 +90,12 @@
        }
 
        console.info( 'Setting the Horizontal Loader progress to', value, 'over', duration + timeResolution );
+
+       loader__intermediate.style.width = ( 100 - progress ) + '%';
+       loader__intermediate.style.transition = 'width ' + duration + timeResolution + ' ease-out';
+       loader__progress.style.width = progress + '%';
+       loader__progress.style.transition = 'width ' + duration + timeResolution + ' ease-out';
+
        return this;
      }
    };

@@ -26,7 +26,6 @@ body {
   overflow: hidden;
   position: absolute;
   right: 0;
-  transition: width ease-out;
   width: 100%;
 }
 
@@ -35,7 +34,6 @@ body {
   box-shadow: 0 0 16px 2px #f00;
   height: 2px;
   position: absolute;
-  transition: width ease-out;
   width: 0%;
 }
 
