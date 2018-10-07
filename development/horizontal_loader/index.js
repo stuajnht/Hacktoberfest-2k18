@@ -11,6 +11,12 @@
    var loader__intermediate;
    var loader__progress;
 
+   var loaderOptions = {
+     loaderID: 'loader',
+     parentContainer: 'body',
+     showIntermediateBlocks: false,
+   };
+
    var progress = 0;
 
    /**
@@ -25,18 +31,54 @@
     };
 
    return {
-     init: function ( element, options ) {
-       console.info( 'Using', element, 'for the loading bar' );
+     init: function ( options ) {
+       var loader__parentContainer;
+       var loader__intermediateBlock;
 
-       loader__container = document.getElementById( element );
+       if ( typeof options !== 'undefined' ) {
+         console.info( 'Using custom options', options, 'for the Horizontal Loader' );
+         loaderOptions = Object.assign( loaderOptions, options );
+       }
 
-       if ( loader__container === null ) {
-         console.error( 'Unable to use', element, 'for the loading bar. Is this a valid element ID?' );
+       // The regex below is taken from: https://ghostinspector.com/blog/regex-validate-html-id-attribute
+       if ( !/^[A-Za-z]+[\w\-\:\.]*$/.test( loaderOptions.loaderID ) || typeof loaderOptions.loaderID !== 'string' ) {
+         console.error( loaderOptions.loaderID, 'does not seem to be a valid HTML ID value for the Horizontal Loader.' );
          return;
        }
 
-       loader__intermediate = loader__container.getElementsByClassName( 'horizontal-loader__container-intermediate' )[ 0 ];
-       loader__progress = loader__container.getElementsByClassName( 'horizontal-loader__container-loaded' )[ 0 ];
+       loader__parentContainer = document.querySelector( loaderOptions.parentContainer );
+       if ( loader__parentContainer === null ) {
+         console.error( 'The', loaderOptions.parentContainer, 'element was not found on this page for the Horizontal Loader to be loaded into.' );
+         return;
+       }
+
+       if ( typeof loaderOptions.showIntermediateBlocks !== 'boolean' ) {
+         console.error( loaderOptions.showIntermediateBlocks, 'does not seem to be a valid boolean value for "showIntermediateBlocks" option for Horizontal Loader.')
+       }
+
+       console.info( 'Options for Horizontal Loader', loaderOptions );
+
+       loader__container = document.createElement( 'div' );
+       loader__container.className = 'horizontal-loader__container';
+       loader__container.id = loaderOptions.loaderID;
+
+       loader__intermediate = document.createElement( 'div' );
+       loader__intermediate.className = 'horizontal-loader__container-intermediate';
+       loader__container.appendChild( loader__intermediate );
+
+       loader__progress = document.createElement( 'div' );
+       loader__progress.className = 'horizontal-loader__container-loaded';
+       loader__container.appendChild( loader__progress );
+
+       if ( loaderOptions.showIntermediateBlocks ) {
+         for ( var blockID = 1; blockID <= 4; blockID++ ) {
+           loader__intermediateBlock = document.createElement( 'div' );
+           loader__intermediateBlock.className = 'horizontal-loaded__intermediate-block horizontal-loaded__intermediate-block-' + blockID;
+           loader__intermediate.appendChild( loader__intermediateBlock );
+         }
+       }
+
+       loader__parentContainer.insertBefore( loader__container, loader__parentContainer.firstChild );
 
        return this;
      },
