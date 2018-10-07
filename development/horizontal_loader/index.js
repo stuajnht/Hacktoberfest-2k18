@@ -1,7 +1,5 @@
 /**
  * Todo:
- * Init (with options [show intermediate, intermediate amount of blocks, show glow, parent container, colours?])
- *   - dynamically create element when running init, rather than the user having to add it to the DOM beforehand
  * Set (position, duration(optional))
  *   - only return from this when the duration has been completed (use promises and polyfill for IE?)
  */
