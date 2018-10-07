@@ -81,8 +81,41 @@ Sets the *Horizontal Loader* to be `value` percent completed, over `duration` ti
 
 
 ### Reset
+
 ```javascript
 HorizontalLoader.reset();
 ```
 
-Resets the *Horizontal Loader* to 0% complete. Shorthand for `HoriztonalLoader.set( 0, 0 )`
+Resets the *Horizontal Loader* to 0% complete. Shorthand for `HoriztonalLoader.set( 0, 0 )`.
+
+
+### Increase
+
+```javascript
+HorizontalLoader.increase( amount, duration );
+```
+
+Increases the *Horizontal Loader* by `amount` (up to 100), over `duration` time period.
+
+Useful for non-linear notification of progress (e.g. 10 checkboxes on a form and the user has to select any 5. Each one they select performs an increase of 20).
+
+|Parameter|Type|Description|Example|Optional|
+|---------|----|-----------|-------|--------|
+|`amount`|integer|The amount to increase the *Horizontal Loader* from its current position. Valid values are between `0` and `100` inclusive|5|No|
+|`duration`|integer|How long the animation should take for the *Horizontal Loader* to show the value it has been increased to. Any value less that 100 is assumed to be in seconds, otherwise it will use milliseconds. If nothing is passed, a default of 2 seconds is used|1500|Yes|
+
+
+### Decrease
+
+```javascript
+HorizontalLoader.decrease( amount, duration );
+```
+
+Decreases the *Horizontal Loader* by `amount` (down to 0), over `duration` time period.
+
+Useful for non-linear notification of progress (e.g. 10 checkboxes on a form and the user has to select any 5. Each one they deselect performs a decrease of 20).
+
+|Parameter|Type|Description|Example|Optional|
+|---------|----|-----------|-------|--------|
+|`amount`|integer|The amount to decrease the *Horizontal Loader* from its current position. Valid values are between `0` and `100` inclusive|5|No|
+|`duration`|integer|How long the animation should take for the *Horizontal Loader* to show the value it has been decreased to. Any value less that 100 is assumed to be in seconds, otherwise it will use milliseconds. If nothing is passed, a default of 2 seconds is used|1|Yes|
