@@ -1,9 +1,9 @@
 /**
  * Todo:
  * Init (with options [show intermediate, intermediate amount of blocks, show glow, parent container, colours?])
+ *   - dynamically create element when running init, rather than the user having to add it to the DOM beforehand
  * Set (position, duration(optional))
- *   - the duration can be achieved by applying the `transition-duration` style then removing it when complete
- *   - only return from this when the duration has been completed
+ *   - only return from this when the duration has been completed (use promises and polyfill for IE?)
  */
 
  var HorizontalLoader = ( function loader( window, document ) {
