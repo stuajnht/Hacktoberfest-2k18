@@ -76,6 +76,15 @@ Sets the *Horizontal Loader* to be `value` percent completed, over `duration` ti
 |`duration`|integer|How long the animation should take for the *Horizontal Loader* to show the value it has been set to. Any value less that 100 is assumed to be in seconds, otherwise it will use milliseconds. If nothing is passed, a default of 2 seconds is used|10|Yes|
 
 
+### Get
+
+```javascript
+HorizontalLoader.get();
+```
+
+Gets the current percentage amount of the *Horizontal Loader*.
+
+
 ### Reset
 
 ```javascript

@@ -140,6 +140,10 @@
        return this;
      },
 
+     get: function () {
+       return progress;
+     },
+
      reset: function () {
        console.info( 'Resetting the Horizontal Loader' );
        return this.set( 0, 0 );
