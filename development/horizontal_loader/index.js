@@ -99,7 +99,46 @@
      },
 
      reset: function () {
+       console.info( 'Resetting the Horizontal Loader' );
        return this.set( 0, 0 );
+     },
+
+     increase: function ( amount, duration ) {
+       var increase;
+
+       if ( !Number.isInteger( amount ) || amount < 0 || amount > 100 ) {
+         console.error( 'Unable to increase the Horizontal Loader. The amount needs to be an integer between 0 and 100 inclusive.' );
+         return this;
+       }
+
+       console.info( 'Increasing the Horizontal Loader by', amount );
+       increase = progress + amount;
+
+       if ( increase > 100 ) {
+         console.warn( 'The maximum value for Horizontal Loader is 100. The attempted increase would go to', increase, 'so this has been limited.' );
+         increase = 100;
+       }
+
+       return this.set( increase, duration );
+     },
+
+     decrease: function ( amount, duration ) {
+       var decrease;
+
+       if ( !Number.isInteger( amount ) || amount < 0 || amount > 100 ) {
+         console.error( 'Unable to decrease the Horizontal Loader. The amount needs to be an integer between 0 and 100 inclusive.' );
+         return this;
+       }
+
+       console.info( 'Decreasing the Horizontal Loader by', amount );
+       decrease = progress - amount;
+
+       if ( decrease < 0 ) {
+         console.warn( 'The minimum value for Horizontal Loader is 0. The attempted decrease would go to', decrease, 'so this has been limited.' );
+         decrease = 0;
+       }
+
+       return this.set( decrease, duration );
      }
    };
  }( window, document ) )
