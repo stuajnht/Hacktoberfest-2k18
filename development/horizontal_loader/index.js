@@ -4,7 +4,6 @@
  * Set (position, duration(optional))
  *   - the duration can be achieved by applying the `transition-duration` style then removing it when complete
  *   - only return from this when the duration has been completed
- * Reset () - set the bar back to 0% and intermediate to 100%
  */
 
  var HorizontalLoader = ( function loader( window, document ) {
@@ -97,6 +96,10 @@
        loader__progress.style.transition = 'width ' + duration + timeResolution + ' ease-out';
 
        return this;
+     },
+
+     reset: function () {
+       return this.set( 0, 0 );
      }
    };
  }( window, document ) )
