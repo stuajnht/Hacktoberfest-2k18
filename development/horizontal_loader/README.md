@@ -5,18 +5,7 @@ Displays a horizontal line loading animation along the topmost edge of the web p
 
 ## Setup
 
-Include the JavaScript and CSS files, along with the following HTML on your page:
-``` html
-<div id="loader" class="horizontal-loader__container">
-  <div class="horizontal-loader__container-intermediate">
-    <div class="horizontal-loaded__intermediate-block horizontal-loaded__intermediate-block-1"></div>
-    <div class="horizontal-loaded__intermediate-block horizontal-loaded__intermediate-block-2"></div>
-    <div class="horizontal-loaded__intermediate-block horizontal-loaded__intermediate-block-3"></div>
-    <div class="horizontal-loaded__intermediate-block horizontal-loaded__intermediate-block-4"></div>
-  </div>
-  <div class="horizontal-loader__container-loaded"></div>
-</div>
-```
+Include the JavaScript and CSS files on your page.
 
 
 ## Quick Example
@@ -37,15 +26,22 @@ For those of you who want to get the most out of *Horizontal Loader*, read on...
 ### Init
 
 ```javascript
-HorizontalLoader.init( element, options );
+HorizontalLoader.init( options );
 ```
 
-Associates an element on the page so that it can be used as a *Horizontal Loader*.
+Creates a *Horizontal Loader* instance on the page.
 
 |Parameter|Type|Description|Example|Optional|
 |---------|----|-----------|-------|--------|
-|`element`|string|The ID of the loading bar element|`loader`|No|
 |`options`|object|Any additional options to customize the *Horizontal Loader*|{}|Yes|
+
+The object keys to use are listed below. All are optional:
+
+|Parameter|Type|Description|Example|
+|---------|----|-----------|-------|
+|`loaderID`|string|An ID to give to the *Horizontal Loader*|loader|
+|`parentContainer`|string|A valid DOM selector that the *Horizontal Loader* will be prepended as a child|.myDiv|
+|`showIntermediateBlocks`|boolean|Should animated blocks be shown while the *Horizontal Loader* is showing|true|
 
 
 ### Show
@@ -119,3 +115,19 @@ Useful for non-linear notification of progress (e.g. 10 checkboxes on a form and
 |---------|----|-----------|-------|--------|
 |`amount`|integer|The amount to decrease the *Horizontal Loader* from its current position. Valid values are between `0` and `100` inclusive|5|No|
 |`duration`|integer|How long the animation should take for the *Horizontal Loader* to show the value it has been decreased to. Any value less that 100 is assumed to be in seconds, otherwise it will use milliseconds. If nothing is passed, a default of 2 seconds is used|1|Yes|
+
+
+## Known Issues
+
+### The *Horizontal Loader* is not animating
+
+If you method chain after the [`init`](#init) function then no CSS animations will happen. This is due to [browser implementations](https://stackoverflow.com/a/24195559), so a workaround is to use a `setTimeout` function call.
+
+```javascript
+HorizontalLoader.init();
+setTimeout( function() {
+  HorizontalLoader.show().set( 60 );
+}, 0 );
+```
+
+Any subsequent calls to `HorizontalLoader` functions will animate as expected.
